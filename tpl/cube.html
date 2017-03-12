@@ -1,0 +1,76 @@
+<div class = "main_area" ng-controller="viewCon" view-adjust>
+
+	
+
+	<div class="return_btn">
+		<span class="glyphicon glyphicon-menu-left" ng-click="returnToMain()"></span>
+	</div>
+	<cube></cube>
+
+	<nav class="side-bar" ng-class="{'side-bar-right':hideBar}">
+		
+		<button class="font-title-sm btn btn-primary button_pannel_show" type="button" ng-click="hideBar = !hideBar">Show/Hide buttons</button>
+		
+		<div class = "button_pannel">
+
+			<div id = "button_pannel_container">
+				<div class="button_pannel_area button_pannel_broder-1">
+					<div class = "button_pannel-title">Zoom</div>
+					<input class="view-scaler" type="range" value="{viewScale}" min="50" max="200" step="5" ng-model="viewScale">
+					<div class = "button_pannel-title">Position - X</div>
+					<input class="view-scaler" type="range" value="{viewX}" min="-200" max="300" step="5" ng-model="viewX">
+					<div class = "button_pannel-title">Position - Y</div>
+					<input class="view-scaler" type="range" value="{viewY}" min="-200" max="300" step="5" ng-model="viewY">					
+				</div>
+
+
+
+				<div class="button_pannel_area button_pannel_broder-2">
+					<div class = "button_pannel-title">Clocwise face rotations</div>
+					<div ng-repeat="buttonsValue in pannelButtonMaping0">
+						<span ng-repeat="button in buttonsValue">
+							<button type="button" class="btn btn-default" ng-disabled= "isProcessing" ng-click="panelInput(button.value)">{{button.value}}</button>
+						</span>
+					</div>	
+				</div>
+
+				<div class="button_pannel_area button_pannel_broder-3">
+					<div class = "button_pannel-title">Counterclocwise face rotations</div>
+					<div ng-repeat="buttonsValue in pannelButtonMaping1">
+						<span ng-repeat="button in buttonsValue">
+							<button type="button" class="btn btn-default" ng-disabled= "isProcessing" ng-click="panelInput(button.value)">{{button.value}}</button>
+						</span>
+					</div>						
+
+				</div>	
+
+				<div class="button_pannel_area button_pannel_broder-4" ng-class="{button_pannel_area_disappear: cubeDimension % 2 == 0}">
+					<div class = "button_pannel-title">Slice turns</div>
+					<div ng-repeat="buttonsValue in pannelButtonMaping2">
+						<span ng-repeat="button in buttonsValue">
+							<button type="button" class="btn btn-default" ng-disabled= "isProcessing" ng-click="panelInput(button.value)">{{button.value}}</button>
+						</span>
+					</div>	
+				</div>		
+
+				<div class="button_pannel_area  button_pannel_broder-5">
+					<div class = "button_pannel-title">Whole cube rotations</div>
+					<div ng-repeat="buttonsValue in pannelButtonMaping3">
+						<span ng-repeat="button in buttonsValue">
+							<button type="button" class="btn btn-default" ng-disabled= "isProcessing" ng-click="panelInput(button.value)">{{button.value}}</button>
+						</span>
+					</div>	
+				</div>	
+
+				<div class="button_pannel_area button_pannel_broder-1" ng-hide="inputSolution">		
+					<div class = "button_pannel-title">Random rotations</div>
+					<button type="button" class="btn btn-default" ng-click="RandomInitialization()" ng-disabled= "isProcessing">Randomize</button>
+				</div>
+
+
+			</div>
+		</div>
+
+	</nav>
+
+</div>

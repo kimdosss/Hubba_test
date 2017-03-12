@@ -1,0 +1,29 @@
+<div class="main-wrapper">
+	<div>
+	<h1 class="main-title">
+		<span class="main-title-color-1">R</span>
+		<span class="main-title-color-2">u</span>
+		<span class="main-title-color-3">b</span>
+		<span class="main-title-color-4">i</span>
+		<span class="main-title-color-5">k</span>
+		<span class="main-title-color-6">C</span>
+		<span class="main-title-color-1">u</span>
+		<span class="main-title-color-2">b</span>
+		<span class="main-title-color-3">e</span>
+	</h1>	
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Select Your Cube
+		<span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="selectCube(2)">2x2</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="selectCube(3)">3x3</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="selectCube(4)">4x4</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1" ng-click="selectCube(5)">5x5</a></li>
+		</ul>
+	</div>
+	<div ng-controller="cubeCon">
+		<cube-demo></cube-demo>
+	</div>
+	</div>
+</div>
+

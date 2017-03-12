@@ -1,0 +1,642 @@
+@import "color";
+@import "input";
+@import "mainpage";
+
+@mixin spin_animation($keyframe, $time) {
+
+	animation: $keyframe $time ease-in-out forwards;
+	-webkit-animation: $keyframe $time ease-in-out forwards;
+	-moz-animation: $keyframe $time ease-in-out forwards;
+	-o-animation: $keyframe $time ease-in-out forwards;
+
+}
+
+@mixin transformation($transformation) {
+	-moz-transform: $transformation;
+    -webkit-transform: $transformation;
+    -o-transform: $transformation;
+    transform: $transformation;
+}
+
+
+@mixin transform_origin($x) {
+	transform-origin: $x;
+	-webkit-transform-origin: $x;
+}
+
+@mixin keyframes_test($animationName, $frame1, $frame2) {
+	@-webkit-keyframes #{$animationName} {
+		from { -webkit-transform: $frame1; }
+		to { -webkit-transform: $frame2; }
+	}
+	@-moz-keyframes #{$animationName} {
+		from { -moz-transform: $frame1; }
+		to { -moz-transform: $frame2; }
+	}
+	@-o-keyframes #{$animationName} {
+		from { -o-transform: $frame1; }
+		to { -o-transform: $frame2; }
+	}
+	@keyframes #{$animationName} {
+		from { transform: $frame1; }
+		to { transform: $frame2; }
+	}
+}
+
+
+$animation_time: 0.25s;
+
+
+body {
+	background: #3d3d3d;
+	/*overflow-y: scroll; */
+	font: 400 15px/1.8 "Comic Sans MS", cursive, sans-serif;
+	height: 100%;
+}
+
+.btn-default{
+	background-color: #D5D5D5;
+}
+.btn-primary{
+	background-color: #006F8A;
+}
+.btn-primary:hover{
+	background-color: #3988A9;
+}
+.main_area{
+	position: absolute;
+	/*margin-left:20px;*/
+	width: 100%;
+	/*height: 550px;*/
+	background: #fff;
+
+}
+.nav-bar{
+	width: 100%;
+	position: fixed;	
+}
+
+.view-scaler{
+	width: 85% !important;
+	margin-bottom: 10px;
+}
+
+$topbarHeight: 60px;
+.top-bar{
+	position: fixed;
+	width: 100%;
+	height: $topbarHeight;
+	z-index: 10;
+	background: #fff;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+	font-size: 20px;
+	font-weight: 600;
+	.top-bar-list-item-left{
+		display: block;
+		float: left;
+		margin: 20px;
+	}
+	.top-bar-list-item-right{
+		display: block;
+		float: right;
+		margin: 12px 50px
+	}
+}
+
+
+/* right hand system */
+/* keyframes:; spin_(xyz rotate axis)(positive negative direction)(spin parts side/top) */
+
+/* y axis */
+
+
+@include keyframes_test(spin_yn_s, rotateY(90deg), rotateY(0deg));
+
+@include keyframes_test(spin_yn_t, rotateZ(-90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_yp_s, rotateY(-90deg), rotateY(0deg));
+
+@include keyframes_test(spin_yp_t, rotateZ(90deg), rotateZ(0deg));
+
+
+
+/* x axis */
+
+@include keyframes_test(spin_xp_s, rotateX(90deg), rotateX(0deg));
+
+@include keyframes_test(spin_xp_t, rotateZ(90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_xn_s, rotateX(-90deg), rotateX(0deg));
+
+@include keyframes_test(spin_xn_t, rotateZ(-90deg),  rotateZ(0deg));
+
+/* z axis */
+@include keyframes_test(spin_zp_s_0, rotateX(-90deg),  rotateX(0deg));
+
+@include keyframes_test(spin_zp_s_1, rotateY(90deg), rotateY(0deg));
+
+@include keyframes_test(spin_zp_t, rotateZ(90deg), rotateZ(0deg));
+
+@include keyframes_test(spin_zn_s_0, rotateX(90deg), rotateX(0deg));
+
+@include keyframes_test(spin_zn_s_1, rotateY(-90deg), rotateY(0deg));
+
+@include keyframes_test(spin_zn_t, rotateZ(-90deg), rotateZ(0deg));
+
+
+
+/* movement notation: spin_effect_(xyz rotate axis)(positive/negative direction)_(spin parts side/top) */
+
+
+
+
+.spin_effect_yp_s {
+	@include spin_animation(spin_yp_s, $animation_time)
+}
+
+.spin_effect_yp_t {		
+	@include spin_animation(spin_yp_t, $animation_time)
+}
+
+.spin_effect_yn_s {
+	@include spin_animation(spin_yn_s, $animation_time)
+}
+
+.spin_effect_yn_t {		
+	@include spin_animation(spin_yn_t, $animation_time)
+}
+
+
+.spin_effect_xp_s {
+	@include spin_animation(spin_xp_s, $animation_time)
+}
+
+.spin_effect_xp_t {
+	@include spin_animation(spin_xp_t, $animation_time)
+}
+
+.spin_effect_xn_s {
+	@include spin_animation(spin_xn_s, $animation_time)
+}
+
+.spin_effect_xn_t {
+	@include spin_animation(spin_xn_t, $animation_time)
+}
+
+
+
+.spin_effect_zp_s_0 {
+	@include spin_animation(spin_zp_s_0, $animation_time)
+}
+
+.spin_effect_zp_s_1 {
+	@include spin_animation(spin_zp_s_1, $animation_time)
+}
+
+.spin_effect_zp_t {
+	@include spin_animation(spin_zp_t, $animation_time)
+}
+
+
+.spin_effect_zn_s_0 {
+	@include spin_animation(spin_zn_s_0, $animation_time)
+}
+
+.spin_effect_zn_s_1 {
+	@include spin_animation(spin_zn_s_1, $animation_time)
+}
+
+.spin_effect_zn_t {
+	@include spin_animation(spin_zn_t, $animation_time)
+}
+
+
+
+cube{
+	position: absolute;
+	cursor: pointer;
+	perspective: 800px;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+	margin-left: 100px;
+	margin-top: 80px;
+}
+
+cube-faces{
+	position: absolute;	
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    z-index: 0;
+}
+
+
+.face0 div{
+	background: $color-1
+}
+
+
+.face1 div{
+	background: $color-2
+}
+
+.face2 div{
+	background: $color-3
+}
+
+.face3 div{
+	background: $color-4
+}
+
+.face4 div{
+	background: $color-5
+}
+
+.face5 div{
+	background: $color-6
+}
+
+.arrowx{
+	display: none;
+	position: relative;
+	transform: translateY(150px);
+	width: 500px;
+	height: 10px;
+	background: #555
+}
+
+.arrowy{
+	display: none;
+	position: absolute;
+	transform: translateX(-150px) rotateZ(90deg);
+	width: 500px;
+	height: 10px;
+	background: #000
+}
+
+.arrowz{
+	display: none;
+	position: absolute;
+	transform: translateY(150px) translateZ(150px) rotateY(90deg);
+	width: 500px;
+	height: 10px;
+	background: red
+}
+
+
+control-Pannel{
+	margin: 50px;
+	position: absolute;
+	z-index: 30;
+	/*@include transformation(translateX(-125px) translateY(-110px) translateZ(150px));*/
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+
+
+
+.button-group-0 {
+	@include transformation(translateX(20px) translateY(0px));	
+	position: absolute;
+	z-index: 10;
+
+}
+
+.button-group-1 {
+	@include transformation(rotateZ(180deg) rotateX(180deg) translateX(-380px) translateY(0px));	
+	position: absolute;
+	z-index: 10;
+
+}
+
+.button-group-2 {
+	@include transformation(rotateZ(90deg) translateX(-125px) translateY(-245px));	
+	position: absolute;
+	z-index: 10;
+
+}
+
+.button-group-3 {
+	@include transformation(rotateZ(270deg) rotateX(180deg) translateX(-235px) translateY(-250px));	
+	position: absolute;
+	z-index: 10;
+
+}
+
+.button-group-4 {
+	@include transformation(rotateX(90deg) rotateZ(180deg) translateX(-380px) translateY(112px) translateZ(90px));	
+	position: absolute;
+	z-index: 10;
+}
+
+.button-group-5 {
+	@include transformation(rotateX(270deg) translateX(20px) translateY(110px) translateZ(-90px));	
+	position: absolute;
+	z-index: 10;
+}
+
+control-pannel-button{
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin-top: 50px;
+	font-size: 70px;
+	transition: 0.5s ease-in-out;
+	-webkit-transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	z-index: 10;
+}
+
+.control-pannel-button-hover{
+	color: #B81D18;
+
+}
+
+.rotate-view-btn{
+	padding:0;
+	margin:3px 4px;
+}
+
+.rotate-view-btn >img{
+	height: 50px;
+	width: 50px;	
+}
+
+$side-bar-width:200;
+$button_pannel_show-width:40;
+$button_pannel-solution-height:190;
+$button_pannel-solution-showBtn-height:30;
+$button_pannel-solution-display-width:110;
+.side-bar{
+	z-index: 50;
+	width: $side-bar-width + $button_pannel_show-width + px;
+	position: fixed;
+	right: 0;
+	height: 100%;
+	transition: 0.5s;
+	color: #D5D5D5;	
+}
+
+.side-bar-right{
+	right: (- $side-bar-width - 5) + px;
+}
+/*@include keyframes_test(collapse-right, right:0, right:$side-bar-width);*/
+.button_pannel_show{
+	position: absolute;
+	top: 40%;
+	right: $side-bar-width - 57 + px;
+	height: $button_pannel_show-width + px;
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+.button_pannel {
+	/*position: absolute;*/
+	margin-left: $button_pannel_show-width + px;
+	height: 100%;
+
+	.button_pannel-title{
+		font-size: 15px;
+		font-weight: 600;
+	}
+	button {
+		font-size: 12px;
+		margin-top: 5px;
+		font-weight: 600;
+	}
+	.button_pannel-btn-wrapper{
+		overflow-x: scroll
+	}
+	.button_pannel-btn{
+		display: inline;
+		float: left;
+	}
+	.button_pannel_area{		
+		visibility: visible;
+		opacity: 1;
+		transition: 1s;
+		display: block;
+		background: #333;
+		border-top: 1px #222 solid;
+		 
+		padding: 3px 12px 10px 10px;
+		
+	}
+	.button_pannel_broder-1{
+		border-left: 8px $color-2 solid;/*#D08846*/
+	}
+	.button_pannel_broder-2{
+		border-left: 8px $color-5 solid;/*#B23E43*/
+	}
+	.button_pannel_broder-3{
+		border-left: 8px $color-4 solid;/*#328683*/
+	}
+	.button_pannel_broder-4{
+		border-left: 8px $color-3 solid;/*#006F8A*/
+	}
+	.button_pannel_broder-5{
+		border-left: 8px $color-6 solid;/*#61447C*/
+	}
+
+
+
+	.button_pannel_area_disappear{
+		height: 0;
+		opacity: 0;
+		padding: 0;
+		visibility: hidden;
+		transition: 1s;
+		border-width: 0px;
+	}
+
+    #button_pannel_container{
+    	width: ($side-bar-width) + px;
+    	background: #333;
+    	padding: 0px 0px 0px 0px;
+    	overflow-y:scroll;
+    	height: 100%;
+    	box-shadow: -7px 5px 30px  #111;
+    }
+
+    .button_pannel-solution{
+    	position: absolute;
+		width: ($side-bar-width) + px;
+		background: #fff;
+		height: $button_pannel-solution-showBtn-height + px;
+		transition: 0.5s ease-in-out;
+		overflow-y:hidden; 
+		overflow-x:hidden; 
+    }
+
+    .button_pannel-solution-display{
+    	width: 100%;
+    	height: $button_pannel-solution-height - 2 * $button_pannel-solution-showBtn-height + px;
+    	overflow-y:scroll;
+    	background: #333;
+    	position: absolute;
+    	padding: 5px 10px;
+    	
+    }
+    .button_pannel-solution-display-selected{
+    	color: #B23E43;
+    }
+
+    .button_pannel-solution-display-index-title{
+    	float: left;
+    	clear: left;
+    	padding:0px 10px;
+    	width: 30%;
+    	text-align: center;
+    	display: inline-block;
+    }
+
+    .button_pannel-solution-display-content-title{
+    	float: right;
+    	clear: right;
+    	padding:0px 10px;
+    	width: 65%;
+    	text-align: center;
+    	display: inline-block;
+    }
+    .button_pannel-solution-display-row{
+
+    }
+    .button_pannel-solution-display-index{
+    	float: left;
+    	clear: left;
+    	padding:2px 10px;
+    	width: 30%;
+    	text-align: center;
+    	display: inline-block;
+    }
+
+    .button_pannel-solution-display-content{
+    	float: right;
+    	clear: right;
+    	padding:2px 10px;
+    	width: 65%;
+    	text-align: center;
+    	display: inline-block;
+    }
+
+    .button_pannel-solution-btn-wrapper{
+    	position: absolute;
+    	/*left: $button_pannel-solution-display-width + 15 + px; */
+    	bottom: $button_pannel-solution-showBtn-height + px;
+    	width: 100%;
+    	margin: 0px;
+    	.button_pannel-solution-btn{
+    		width: 27%;
+    		padding-left: 7px;
+    		height: $button_pannel-solution-showBtn-height + px;
+    	}
+    	.button_pannel-solution-btn-question{
+    		width: 19%;
+    		height: $button_pannel-solution-showBtn-height + px;
+    	}
+    }
+    .button_pannel-solution-btn{
+    	display: block;
+    }
+
+    .button_pannel-solution-showBtn{
+    	width: 100%;
+    	background: $color-3;
+    	position: absolute;
+    	height: $button_pannel-solution-showBtn-height + px;
+    	bottom: 0;
+    	span{
+    		transition: 0.5s ease-in-out;
+    		width: 20px;
+    		margin: 7px 90px;
+    	}
+    }
+
+    .button_pannel-solution-show{
+		height: $button_pannel-solution-height + px;
+		.button_pannel-solution-showBtn{
+			span{
+				-webkit-transform: rotate(180deg);
+				transform: rotate(180deg);
+			}
+		}
+
+    }
+
+
+
+
+}
+
+.return_btn{
+	position: fixed;
+	z-index: 200;
+	width: 20px;
+	height: 20px;
+	margin-top: 12px;
+    margin-left: 12px;
+	span{
+		color: #d2d2d2;
+		font-size: 30px;
+		cursor: pointer;
+
+	}
+}
+
+/*
+ * Animations 
+ * ---------- */
+
+.button_pannel-solution-display-row.ng-enter {
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+    max-height: 0;
+    opacity: 0;
+    left: -100px;
+}
+ 
+.button_pannel-solution-display-row.ng-enter.ng-enter-active {
+    max-height: 90px;
+    opacity: 1;
+    left: 0;
+}
+ 
+.button_pannel-solution-display-row.ng-leave {
+  -webkit-animation:0.5s repeat_item_effect;
+  -moz-animation:0.5s repeat_item_effect;
+  -o-animation:0.5s repeat_item_effect;
+  animation:0.5s repeat_item_effect;
+}
+
+
+@keyframes repeat_item_effect {
+  from {
+    max-height: 90px;
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    left: -100px;
+  }
+}
+ 
+
+@-webkit-keyframes repeat_item_effect {
+  from {
+    max-height: 90px;
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    left: -50px;
+  }
+}
+ 
+
+

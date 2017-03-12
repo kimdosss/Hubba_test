@@ -1,0 +1,52 @@
+
+.main-wrapper{
+    width: 320px;
+    height: 200px;
+    display: block;
+    text-align: center;
+    position: absolute;
+	top:-20%;
+	bottom: 0;
+	left: 0;
+	right: 0;	
+	margin: auto;
+}
+
+.main-title{
+	color: #D2D2D2;
+	span{
+		padding: 0;
+	}
+	.main-title-color-1{
+		color: $color-5;
+	}
+	.main-title-color-2{
+		color: $color-2;
+	}
+	.main-title-color-3{
+		color: $color-3;
+	}
+	.main-title-color-4{
+		color: $color-4;
+	}
+	.main-title-color-5{
+		color: $color-1;
+	}
+	.main-title-color-6{
+		color: $color-6;
+	}
+}
+
+cube-demo{
+	position: absolute;
+	perspective: 800px;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    margin:55px -30px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
